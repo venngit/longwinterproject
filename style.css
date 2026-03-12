@@ -1,0 +1,36 @@
+:root{--bg:#000;--fg:#fff}
+html,body{height:100%}
+body{
+  background:var(--bg);
+  color:var(--fg);
+  font-family: 'Courier New', Courier, monospace;
+  margin:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{
+  max-width:960px;
+  padding:4rem 2rem;
+  text-align:center;
+}
+h1{
+  font-size:2.25rem;
+  letter-spacing:0.18rem;
+  text-transform:uppercase;
+  margin:0 0 0.5rem;
+}
+.owner{margin:0 0 1rem;opacity:0.95}
+.card{display:inline-block;padding:1rem;border:1px solid var(--fg);margin-bottom:1rem}
+h2{margin:0 0 .5rem;font-size:1rem}
+p{margin:0;font-size:0.95rem;line-height:1.5}
+
+/* Books table */
+#books-table{margin:0 auto;border-collapse:collapse;width:100%;max-width:920px;font-size:1rem}
+#books-table th,#books-table td{border:1px solid var(--fg);padding:.75rem;text-align:left}
+.thumb{width:140px;height:auto;display:block}
+#books-table td{vertical-align:top}
+.desc{max-width:520px;white-space:normal;word-break:break-word}
+#books-table thead th{font-weight:700}
+

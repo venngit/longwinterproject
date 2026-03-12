@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Long Winter Project</title>
+  <link rel="stylesheet" href="style.css">
+  </head>
+<body>
+  <main class="wrap">
+    <h1>Long Winter Project</h1>
+    <p class="owner">© Venn Vaillant 2026</p>
+
+    <section class="card">
+      <h2>Publications</h2>
+      <p></p>
+      <div class="books">
+        <table id="books-table">
+          <thead>
+            <tr>
+              <th>Cover</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Author(s)</th>
+              <th>Status</th>
+              <th>Buy</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Rows populated by script -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer>
+      <div>Collection of personal projects.</div>
+      <div class="copyright"></div>
+    </footer>
+  </main>
+  <script>
+    async function loadBooks(){
+      try{
+        const res = await fetch('data/books.json');
+        const books = await res.json();
+        books.sort((a,b)=> a.title.localeCompare(b.title));
+        const tbody = document.querySelector('#books-table tbody');
+        books.forEach(book=>{
+          const tr = document.createElement('tr');
+
+          const tdCover = document.createElement('td');
+          if(book.thumbnail){
+            const img = document.createElement('img');
+            img.src = book.thumbnail;
+            img.alt = book.title + ' cover';
+            img.className = 'thumb';
+            tdCover.appendChild(img);
+          } else {
+            tdCover.textContent = '';
+          }
+
+          const tdTitle = document.createElement('td');
+          tdTitle.textContent = book.title + (book.subtitle ? ' — ' + book.subtitle : '');
+
+          const tdDescription = document.createElement('td');
+          tdDescription.textContent = book.description || '';
+          tdDescription.className = 'desc';
+
+          const tdAuthor = document.createElement('td');
+          tdAuthor.textContent = book.author || '';
+
+          const tdStatus = document.createElement('td');
+          tdStatus.textContent = book.status === 'published' ? 'Published' : 'Coming soon';
+
+          const tdBuy = document.createElement('td');
+          if(book.purchase_url){
+            const a = document.createElement('a');
+            a.href = book.purchase_url;
+            a.textContent = 'Purchase';
+            a.target = '_blank';
+            tdBuy.appendChild(a);
+          } else {
+            tdBuy.textContent = '—';
+          }
+
+          tr.appendChild(tdCover);
+          tr.appendChild(tdTitle);
+          tr.appendChild(tdDescription);
+          tr.appendChild(tdAuthor);
+          tr.appendChild(tdStatus);
+          tr.appendChild(tdBuy);
+
+          tbody.appendChild(tr);
+        });
+      }catch(e){
+        console.error('Failed to load books', e);
+      }
+    }
+    loadBooks();
+  </script>
+</body>
+</html>

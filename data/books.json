@@ -1,0 +1,25 @@
+[
+  {
+    "id": "auto-reply-1",
+    "title": "Auto-Reply",
+    "subtitle": "Collection of Short Poems & Monochromes",
+    "author": "Venn Vaillant",
+    "category": "Publishing",
+    "status": "published",
+    "thumbnail": "assets/covers/autoreply-book-cover.png",
+    "purchase_url": "https://www.amazon.com/Auto-Reply-Collection-Short-Poems-Monochromes-ebook/dp/B0DXGKC69N",
+    "description": "A compact collection of short poems and monochrome pieces.",
+    "notes": "Kindle edition on Amazon. Replace thumbnail with hosted asset if desired."
+  },
+  {
+    "id": "tip-of-iceland",
+    "title": "The Tip of The Iceland",
+    "author": "Venn Vaillant, Santoshi Branco",
+    "category": "Publishing",
+    "status": "coming_soon",
+    "thumbnail": "assets/covers/ttoti-book-cover.png",
+    "purchase_url": "",
+    "description": "Photography collection capturing Iceland's remote northern landscapes.",
+    "notes": "Photography book — release date TBD."
+  }
+]
