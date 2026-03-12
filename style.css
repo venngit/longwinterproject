@@ -60,7 +60,7 @@ a{color:var(--fg)}
 .article-body{margin-top:1.25rem}
 .article-body p{margin:0 0 1rem}
 .photographer-block{margin:0 0 1rem}
-.photographer-photo{width:220px;max-width:100%;height:auto;border:1px solid var(--fg);display:block}
+.photographer-photo{width:120px;max-width:100%;height:auto;border:1px solid var(--fg);display:block}
 .photographer-block figcaption{margin-top:.5rem;opacity:.85;font-size:.9rem}
 
 @media (max-width:760px){
