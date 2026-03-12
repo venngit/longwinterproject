@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Long Winter Project</title>
   <link rel="stylesheet" href="style.css">
-  </head>
+</head>
 <body>
   <main class="wrap">
     <h1>Long Winter Project</h1>
@@ -13,23 +13,28 @@
 
     <section class="card">
       <h2>Publications</h2>
-      <p></p>
-      <div class="books">
-        <table id="books-table">
-          <thead>
-            <tr>
-              <th>Cover</th>
-              <th>Title</th>
-              <th>Description</th>
-              <th>Author(s)</th>
-              <th>Status</th>
-              <th>Buy</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- Rows populated by script -->
-          </tbody>
-        </table>
+      <div class="books-grid">
+        <article class="book-preview">
+          <a class="cover-link" href="books/auto-reply.html" aria-label="Open Auto-Reply page">
+            <img src="assets/covers/autoreply-book-cover.png" alt="Auto-Reply cover" class="thumb">
+          </a>
+          <h3>Auto-Reply</h3>
+          <p class="subtitle">Collection of Short Poems & Monochromes</p>
+          <p class="desc">A compact collection of short poems and monochrome pieces.</p>
+          <p class="meta">Venn Vaillant · Published</p>
+          <p><a href="books/auto-reply.html">Read more</a></p>
+        </article>
+
+        <article class="book-preview">
+          <a class="cover-link" href="books/the-tip-of-the-iceland.html" aria-label="Open The Tip of The Iceland page">
+            <img src="assets/covers/ttoti-book-cover.png" alt="The Tip of The Iceland cover" class="thumb">
+          </a>
+          <h3>The Tip of The Iceland</h3>
+          <p class="subtitle">Photography Collection</p>
+          <p class="desc">Photography collection capturing Iceland's remote northern landscapes.</p>
+          <p class="meta">Venn Vaillant, Santoshi Branco · Coming soon</p>
+          <p><a href="books/the-tip-of-the-iceland.html">Read more</a></p>
+        </article>
       </div>
     </section>
 
@@ -38,65 +43,5 @@
       <div class="copyright"></div>
     </footer>
   </main>
-  <script>
-    async function loadBooks(){
-      try{
-        const res = await fetch('data/books.json');
-        const books = await res.json();
-        books.sort((a,b)=> a.title.localeCompare(b.title));
-        const tbody = document.querySelector('#books-table tbody');
-        books.forEach(book=>{
-          const tr = document.createElement('tr');
-
-          const tdCover = document.createElement('td');
-          if(book.thumbnail){
-            const img = document.createElement('img');
-            img.src = book.thumbnail;
-            img.alt = book.title + ' cover';
-            img.className = 'thumb';
-            tdCover.appendChild(img);
-          } else {
-            tdCover.textContent = '';
-          }
-
-          const tdTitle = document.createElement('td');
-          tdTitle.textContent = book.title + (book.subtitle ? ' — ' + book.subtitle : '');
-
-          const tdDescription = document.createElement('td');
-          tdDescription.textContent = book.description || '';
-          tdDescription.className = 'desc';
-
-          const tdAuthor = document.createElement('td');
-          tdAuthor.textContent = book.author || '';
-
-          const tdStatus = document.createElement('td');
-          tdStatus.textContent = book.status === 'published' ? 'Published' : 'Coming soon';
-
-          const tdBuy = document.createElement('td');
-          if(book.purchase_url){
-            const a = document.createElement('a');
-            a.href = book.purchase_url;
-            a.textContent = 'Purchase';
-            a.target = '_blank';
-            tdBuy.appendChild(a);
-          } else {
-            tdBuy.textContent = '—';
-          }
-
-          tr.appendChild(tdCover);
-          tr.appendChild(tdTitle);
-          tr.appendChild(tdDescription);
-          tr.appendChild(tdAuthor);
-          tr.appendChild(tdStatus);
-          tr.appendChild(tdBuy);
-
-          tbody.appendChild(tr);
-        });
-      }catch(e){
-        console.error('Failed to load books', e);
-      }
-    }
-    loadBooks();
-  </script>
 </body>
 </html>

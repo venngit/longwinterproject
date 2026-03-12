@@ -5,15 +5,14 @@ body{
   color:var(--fg);
   font-family: 'Courier New', Courier, monospace;
   margin:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  min-height:100vh;
   -webkit-font-smoothing:antialiased;
 }
 .wrap{
   max-width:960px;
   padding:4rem 2rem;
   text-align:center;
+  margin:0 auto;
 }
 h1{
   font-size:2.25rem;
@@ -26,11 +25,46 @@ h1{
 h2{margin:0 0 .5rem;font-size:1rem}
 p{margin:0;font-size:0.95rem;line-height:1.5}
 
-/* Books table */
-#books-table{margin:0 auto;border-collapse:collapse;width:100%;max-width:920px;font-size:1rem}
-#books-table th,#books-table td{border:1px solid var(--fg);padding:.75rem;text-align:left}
-.thumb{width:140px;height:auto;display:block}
-#books-table td{vertical-align:top}
-.desc{max-width:520px;white-space:normal;word-break:break-word}
-#books-table thead th{font-weight:700}
+/* Shared links */
+a{color:var(--fg)}
+
+/* Home book previews */
+.books-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(220px,1fr));
+  gap:1.25rem;
+  text-align:left;
+}
+.book-preview{
+  border:1px solid var(--fg);
+  padding:1rem;
+  display:flex;
+  flex-direction:column;
+  gap:0.5rem;
+}
+.cover-link{display:inline-block;align-self:flex-start}
+.thumb{width:160px;height:auto;display:block;border:1px solid var(--fg)}
+.book-preview h3{margin:0;font-size:1.05rem;line-height:1.4}
+.subtitle{opacity:.85}
+.meta{opacity:.85;font-size:.9rem}
+
+/* Book detail pages */
+.page-wrap{max-width:760px;padding:4rem 2rem;text-align:left;margin:0 auto}
+.book-article{border:1px solid var(--fg);padding:1.5rem}
+.book-header{display:flex;gap:1.5rem;align-items:flex-start;flex-wrap:wrap}
+.book-cover{width:190px;max-width:100%;height:auto;border:1px solid var(--fg)}
+.book-heading h1{margin:0;text-align:left}
+.book-heading .subtitle{margin:.25rem 0 0}
+.byline{margin:.5rem 0 0;opacity:.9}
+.back-link{display:inline-block;margin-top:1.5rem}
+.article-body{margin-top:1.25rem}
+.article-body p{margin:0 0 1rem}
+
+@media (max-width:760px){
+  .wrap{padding:2rem 1rem}
+  .page-wrap{padding:2rem 1rem}
+  .books-grid{grid-template-columns:1fr}
+  .thumb{width:140px}
+  .book-header{flex-direction:column}
+}
 
