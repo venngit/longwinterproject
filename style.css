@@ -47,6 +47,8 @@ a{color:var(--fg)}
 .book-preview h3{margin:0;font-size:1.05rem;line-height:1.4}
 .subtitle{opacity:.85}
 .meta{opacity:.85;font-size:.9rem}
+.coming-soon{color:#ff3b30;font-weight:700;opacity:1}
+.published{color:#34c759;font-weight:700;opacity:1}
 
 /* Book detail pages */
 .page-wrap{max-width:760px;padding:4rem 2rem;text-align:left;margin:0 auto}
